@@ -13,6 +13,14 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors:{
+        ramiSky:"#C3EBFA",
+        ramiSkyLight:"#EDF9FD",
+        ramiPurple:"#CFCEFF",
+        ramiPurpleLight:"#F1F0FF",
+        ramiYellow:"#Fae27c",
+        ramiYellowLight:"#FEFCE8",
+      },
     },
   },
   plugins: [],

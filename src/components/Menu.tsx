@@ -1,3 +1,6 @@
+import Link from "next/link";
+import Image from "next/image";
+
 const menuItems = [
   {
     title: "MENU",
@@ -112,3 +115,32 @@ const menuItems = [
     ],
   },
 ];
+
+const Menu = ({ userRole }: { userRole: string }) => {
+  return (
+    <div className="mt-4 text-sm">
+      {menuItems.map((menu, index) => (
+        <div className="flex flex-col gap-2 " key={index}>
+          {/* Render the title for the section (MENU or OTHER) */}
+          <span className="hidden lg:block text-gray-400 font-light my-4 lg:ml-4 rounded-md hover:bg-ramiSkyLight">{menu.title}</span>
+          
+          {/* Render menu items based on user role */}
+          {menu.items
+            .filter((item) => item.visible.includes(userRole)) 
+            .map((item) => (
+              <Link
+                href={item.href}
+                key={item.href} 
+                className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 lg:ml-5 rounded-md hover:bg-ramiSkyLight"
+              >
+                <Image src={item.icon} alt={`${item.label} icon`} width={20} height={20} />
+                <span className="hidden lg:block">{item.label}</span>
+              </Link>
+            ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Menu;
